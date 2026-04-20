@@ -383,6 +383,14 @@
   }
 
   var saveButtons = root.querySelectorAll(".detail-action-light, .detail-hero-right-actions a[aria-label='여행 저장']");
+  var alreadySaved = state.savedTripIds.indexOf(trip.id) >= 0;
+  for (var k = 0; k < saveButtons.length; k += 1) {
+   if (alreadySaved) {
+    saveButtons[k].setAttribute("aria-pressed", "true");
+   } else {
+    saveButtons[k].setAttribute("aria-pressed", "false");
+   }
+  }
   for (var j = 0; j < saveButtons.length; j += 1) {
    saveButtons[j].addEventListener("click", function (event) {
     event.preventDefault();
@@ -392,6 +400,9 @@
     }
     ensureSavedTrip(state, trip.id);
     saveState(state);
+    for (var n = 0; n < saveButtons.length; n += 1) {
+     saveButtons[n].setAttribute("aria-pressed", "true");
+    }
    });
   }
  }
@@ -437,28 +448,35 @@
   var title = root.querySelector(".itinerary-title-left h1");
   if (title) title.textContent = trip.title;
 
+  function applyDaySelection(day) {
+   state.selectedDay = day;
+   saveState(state);
+   for (var idx = 0; idx < daysButtons.length; idx += 1) {
+    var match = idx + 1 === day;
+    daysButtons[idx].classList.toggle("is-active", match);
+   }
+   renderItineraryDay(timelineCard, trip.itinerary[day]);
+  }
+
   var daysButtons = root.querySelectorAll(".itinerary-day");
+  var timelineCard = root.querySelector(".timeline-card");
   for (var i = 0; i < daysButtons.length; i += 1) {
    (function (index) {
     var day = index + 1;
     var btn = daysButtons[index];
-    if (day === selected) btn.classList.add("is-active");
-    else btn.classList.remove("is-active");
     btn.addEventListener("click", function () {
-     state.selectedDay = day;
-     saveState(state);
-     wireItinerary(state);
+     applyDaySelection(day);
     });
    })(i);
   }
 
-  var timelineCard = root.querySelector(".timeline-card");
-  if (timelineCard) renderItineraryDay(timelineCard, trip.itinerary[selected]);
+  if (timelineCard) applyDaySelection(selected);
 
   var favorite = root.querySelector(".itinerary-favorite");
   if (favorite) {
    var isSaved = state.savedTripIds.indexOf(trip.id) >= 0;
    favorite.classList.toggle("is-active", isSaved);
+   favorite.setAttribute("aria-pressed", isSaved ? "true" : "false");
    favorite.addEventListener("click", function (event) {
     event.preventDefault();
     if (!state.user.loggedIn) {
@@ -468,7 +486,9 @@
     if (state.savedTripIds.indexOf(trip.id) >= 0) removeSavedTrip(state, trip.id);
     else ensureSavedTrip(state, trip.id);
     saveState(state);
-    wireItinerary(state);
+    var nextSaved = state.savedTripIds.indexOf(trip.id) >= 0;
+    favorite.classList.toggle("is-active", nextSaved);
+    favorite.setAttribute("aria-pressed", nextSaved ? "true" : "false");
    });
   }
 
