@@ -1,0 +1,72 @@
+﻿<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoamAI 로그인</title>
+  <link rel="stylesheet" href="css/style.css" />
+ </head>
+ <body>
+  <div class="auth-page auth-signin">
+   <section class="auth-promo" aria-hidden="true">
+    <div class="auth-promo-copy">
+     <h1>다음 멋진 여행을 발견해보세요</h1>
+     <p>당신만의 스타일에 맞춘 AI 기반 여행 추천 서비스</p>
+    </div>
+    <div class="auth-promo-image">
+     <img src="assets/images/travel.png" alt="" />
+    </div>
+   </section>
+
+   <section class="auth-panel">
+    <header class="auth-header">
+     <a href="index.html" class="auth-back" aria-label="뒤로가기">
+      <img src="assets/icons/back-black.png" alt="" />
+     </a>
+    </header>
+
+    <main class="auth-main">
+     <div class="auth-intro">
+      <h2 class="auth-title">다시 오신 것을 환영합니다</h2>
+      <p class="auth-subtitle">로그인하고 저장한 여행을 이어서 확인하세요.</p>
+     </div>
+
+     <form class="auth-form" action="my.html" method="get">
+      <label class="auth-field">
+       <span class="auth-label">이메일</span>
+       <span class="auth-input-wrap">
+        <img src="assets/icons/mail.png" alt="" />
+        <input type="email" value="hong@example.com" />
+       </span>
+      </label>
+
+      <label class="auth-field">
+       <span class="auth-label">비밀번호</span>
+       <span class="auth-input-wrap">
+        <img src="assets/icons/lock.png" alt="" />
+        <input type="password" value="password" />
+       </span>
+      </label>
+
+      <button class="auth-submit" type="submit">이메일로 로그인</button>
+     </form>
+
+     <div class="auth-divider"><span>소셜 계정으로 로그인</span></div>
+
+     <div class="auth-social-grid auth-social-grid-4">
+      <button type="button" class="auth-social-btn" aria-label="Google 로그인"><span>G</span></button>
+      <button type="button" class="auth-social-btn" aria-label="Apple 로그인"><span>A</span></button>
+      <button type="button" class="auth-social-btn" aria-label="Kakao 로그인"><span>K</span></button>
+      <button type="button" class="auth-social-btn" aria-label="Naver 로그인"><span>N</span></button>
+     </div>
+
+     <p class="auth-switch">계정이 없으신가요? <a href="signup.html">가입하기</a></p>
+    </main>
+   </section>
+  </div>
+   <script src="js/script.js" defer></script>
+ </body>
+</html>
+
+
+

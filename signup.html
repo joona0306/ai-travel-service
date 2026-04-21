@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="ko">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RoamAI 회원가입</title>
+  <link rel="stylesheet" href="css/style.css" />
+ </head>
+ <body>
+  <div class="auth-page auth-signup">
+   <section class="auth-promo" aria-hidden="true">
+    <div class="auth-promo-copy">
+     <h1>당신만의 여행 기록을 시작해보세요</h1>
+     <p>회원가입 후 추천 여행 저장과 맞춤 일정을 이어서 확인할 수 있어요.</p>
+    </div>
+    <div class="auth-promo-image">
+     <img src="assets/images/travel.png" alt="" />
+    </div>
+   </section>
+
+   <section class="auth-panel">
+    <header class="auth-header">
+     <a href="index.html" class="auth-back" aria-label="뒤로가기">
+      <img src="assets/icons/back-black.png" alt="" />
+     </a>
+    </header>
+
+    <main class="auth-main">
+     <div class="auth-intro">
+      <h2 class="auth-title">회원가입</h2>
+      <p class="auth-subtitle">간단한 정보 입력 후 여행 추천을 시작하세요.</p>
+     </div>
+
+     <form class="auth-form" action="onboarding-preference.html" method="get">
+      <label class="auth-field">
+       <span class="auth-label">이름</span>
+       <span class="auth-input-wrap no-icon">
+        <input type="text" value="홍길동" />
+       </span>
+      </label>
+
+      <label class="auth-field">
+       <span class="auth-label">이메일</span>
+       <span class="auth-input-wrap">
+        <img src="assets/icons/mail.png" alt="" />
+        <input type="email" value="hong@example.com" />
+       </span>
+      </label>
+
+      <label class="auth-field">
+       <span class="auth-label">비밀번호</span>
+       <span class="auth-input-wrap">
+        <img src="assets/icons/lock.png" alt="" />
+        <input type="password" value="password" />
+       </span>
+      </label>
+
+      <button class="auth-submit" type="submit">이메일로 가입하기</button>
+     </form>
+
+     <p class="auth-switch">이미 계정이 있으신가요? <a href="signin.html">로그인</a></p>
+    </main>
+   </section>
+  </div>
+   <script src="js/script.js" defer></script>
+ </body>
+</html>
+
+
+
